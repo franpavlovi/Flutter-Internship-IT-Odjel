@@ -24,7 +24,7 @@ class Naslovna extends StatelessWidget {
                 ),
               );
             },
-            child: Text(
+            child: const Text(
               'Pokreni kviz',
               style: TextStyle(fontSize: 24),
             ),

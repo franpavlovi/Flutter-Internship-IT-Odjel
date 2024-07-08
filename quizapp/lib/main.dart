@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [Colors.green, Colors.white],
             ),

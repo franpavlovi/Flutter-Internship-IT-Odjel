@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/screens/validacija.dart';
 
 class Kviz extends StatefulWidget {
   const Kviz({super.key});
@@ -26,7 +27,7 @@ class _KvizState extends State<Kviz> {
           ),
         ),
       ),
-      body: const SizedBox(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -46,6 +47,18 @@ class _KvizState extends State<Kviz> {
             ElevatedButton(
               onPressed: null,
               child: Text('Pitanje 3'),
+            ),
+            SizedBox(height: 100),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Validacija(),
+                  ),
+                );
+              },
+              child: Text('Kraj'),
             ),
           ],
         ),

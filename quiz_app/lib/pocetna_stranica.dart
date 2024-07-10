@@ -8,6 +8,9 @@ class PocetnaStranica extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 65, 4, 100),
+      ),
       backgroundColor: const Color.fromARGB(255, 65, 4, 100),
       body: Center(
         child: Expanded(

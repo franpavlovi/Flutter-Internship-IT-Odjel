@@ -1,0 +1,67 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:quiz_app/pitanja/screens/pitanja_screen.dart';
+
+class PocetnaStranica extends StatelessWidget {
+  const PocetnaStranica({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 65, 4, 100),
+      body: Center(
+        child: Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/quiz-logo.png'),
+              const SizedBox(
+                height: 90,
+              ),
+              const Text(
+                'Flutter Quiz App',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                child: OutlinedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PitanjaScreen(),
+                        ));
+                  },
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    side: const BorderSide(width: 3, color: Colors.white),
+                  ),
+                  child: const Row(
+                    children: [
+                      Icon(
+                        Icons.keyboard_double_arrow_right_sharp,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Pokreni kviz',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

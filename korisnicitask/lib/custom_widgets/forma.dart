@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Forma extends StatelessWidget {
-  Forma({super.key, required this.hint, this.obscure = false, required this.icon, required this.controller, this.keyboardType, this.additionalValidator});
+  Forma({super.key, required this.hint, this.obscure = false, required this.icon, this.controller, this.keyboardType, this.additionalValidator, this.readOnly = false});
 
   String? _validateInput(String? value) {
     if (value == null || value.isEmpty) {
@@ -29,6 +29,7 @@ class Forma extends StatelessWidget {
   TextEditingController? controller;
   final TextInputType? keyboardType;
   String? Function(String?)? additionalValidator;
+  bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +38,7 @@ class Forma extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         obscureText: obscure,
+        readOnly: readOnly,
         decoration: InputDecoration(
           labelText: hint,
           filled: true,

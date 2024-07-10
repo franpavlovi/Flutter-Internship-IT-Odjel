@@ -14,6 +14,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Lista korisnika',
       home: Listakorisnika(),
+      onGenerateRoute: (settings) {
+        if (settings.name == Listakorisnika.routeName) {
+          return MaterialPageRoute(
+            builder: (context) => Listakorisnika(),
+          );
+        }
+      },
     );
   }
 }

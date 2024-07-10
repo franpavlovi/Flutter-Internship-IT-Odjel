@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:korisnicitask/_all.dart';
+import 'package:korisnicitask/custom_widgets/forma.dart';
 import 'package:korisnicitask/models/korisnik.dart';
 
 class DetaljiKorisnika extends StatefulWidget {

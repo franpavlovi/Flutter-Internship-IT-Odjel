@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/pitanja/domain/models/pitanje.dart';
-import 'package:quiz_app/pitanja/widgets/odgovor_button.dart';
+
+import 'kviz_screen.dart';
 
 class PitanjaScreen extends StatefulWidget {
   const PitanjaScreen({super.key});
@@ -17,11 +17,12 @@ class _PitanjaScreenState extends State<PitanjaScreen> {
         backgroundColor: const Color.fromARGB(255, 65, 4, 100),
       ),
       backgroundColor: const Color.fromARGB(255, 65, 4, 100),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 80.0),
-        child: Column(
-          children: [],
-        ),
+      body: Column(
+        children: const [
+          Expanded(
+            child: KvizScreen(),
+          ),
+        ],
       ),
     );
   }

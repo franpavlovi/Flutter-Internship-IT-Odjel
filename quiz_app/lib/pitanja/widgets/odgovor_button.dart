@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/pitanja/domain/models/pitanje.dart';
 
 class OdgovorButton extends StatelessWidget {
-  OdgovorButton({super.key, required this.onPressed, required this.pitanje});
+  const OdgovorButton({super.key, required this.odgovor, required this.naKlik});
 
-  final Function? onPressed;
-  final Pitanje pitanje;
+  final String odgovor;
+  final void Function()? naKlik;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      onPressed: naKlik,
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
-          ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(13),
         ),
       ),
-      onPressed: () {},
-      child: Text('asasasa'),
+      child: Text(
+        odgovor,
+        style: const TextStyle(
+          fontWeight: FontWeight.w800,
+          fontSize: 20,
+        ),
+      ),
     );
   }
 }

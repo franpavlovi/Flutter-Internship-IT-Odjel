@@ -15,27 +15,27 @@ class Pitanje {
 
 const pitanja = [
   Pitanje(
-    postavljenoPitanje: 'Kako se zove glavni grad Hrvatske',
+    postavljenoPitanje: 'Kako se zove glavni grad Hrvatske?',
     tocanOdgovor: 'Zagreb',
     ponudjeniOdgovori: ['Zagreb', 'Osijek', 'Split', 'Rijeka', 'Zadar'],
   ),
   Pitanje(
-    postavljenoPitanje: 'Kako se zove glavni grad Belgije',
+    postavljenoPitanje: 'Kako se zove glavni grad Belgije?',
     tocanOdgovor: 'Bruxelles',
     ponudjeniOdgovori: ['Bratislava', 'Bruxelles', 'Amsterdam', 'Ljubljana', 'Antwerpen'],
   ),
   Pitanje(
-    postavljenoPitanje: 'Kako se zove glavni grad Rumunjske',
+    postavljenoPitanje: 'Kako se zove glavni grad Rumunjske?',
     tocanOdgovor: 'Bukurešt',
     ponudjeniOdgovori: ['Cluj Napoca', 'Temišvar', 'Bukurešt', 'Vasloi', 'Ploše'],
   ),
   Pitanje(
-    postavljenoPitanje: 'Kako se zove glavni grad Slovačke',
+    postavljenoPitanje: 'Kako se zove glavni grad Slovačke?',
     tocanOdgovor: 'Bratislava',
     ponudjeniOdgovori: ['Bratislava', 'Bruxelles', 'Amsterdam', 'Ljubljana', 'Antwerpen'],
   ),
   Pitanje(
-    postavljenoPitanje: 'Kako se zove glavni grad Namibije',
+    postavljenoPitanje: 'Kako se zove glavni grad Namibije?',
     tocanOdgovor: 'Windhoek',
     ponudjeniOdgovori: ['Johannesbourg', 'Windhoek', 'Amsterdam', 'Ljubljana', 'Antwerpen'],
   ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:quiz_app/pitanja/screens/pitanja_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:quiz_app/pitanja/screens/kviz_screen.dart';
 
 class PocetnaStranica extends StatelessWidget {
   const PocetnaStranica({super.key});
@@ -8,9 +8,6 @@ class PocetnaStranica extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 65, 4, 100),
-      ),
       backgroundColor: const Color.fromARGB(255, 65, 4, 100),
       body: Center(
         child: Expanded(
@@ -21,9 +18,13 @@ class PocetnaStranica extends StatelessWidget {
               const SizedBox(
                 height: 90,
               ),
-              const Text(
-                'Flutter Quiz App',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              Text(
+                'Geography Quiz App',
+                style: GoogleFonts.lato(
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -32,11 +33,7 @@ class PocetnaStranica extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 100.0),
                 child: OutlinedButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PitanjaScreen(),
-                        ));
+                    Navigator.pushNamed(context, '/kviz');
                   },
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(

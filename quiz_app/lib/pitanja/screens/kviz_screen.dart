@@ -13,7 +13,7 @@ class _KvizScreenState extends State<KvizScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: const Color.fromARGB(255, 65, 4, 100),
+      backgroundColor: Color.fromARGB(255, 65, 4, 100),
       body: Column(
         children: [
           Expanded(

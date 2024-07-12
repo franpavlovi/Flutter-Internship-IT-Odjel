@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/pitanja/screens/kviz_screen.dart';
-import 'package:quiz_app/pocetna_stranica.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RezultatiScreen extends StatelessWidget {
   const RezultatiScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments! as Map<String, List<String>>;
+
+    final tocniOdgovori = args['tocniOdgovori'];
+    final netocniOdgovori = args['netocniodgovori'];
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(
         255,
@@ -18,10 +22,22 @@ class RezultatiScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Rezultati'),
-            const Text('Rezultati'),
+            Text(
+              'REZULTATI:',
+              style: GoogleFonts.lato(color: Colors.white, fontSize: 30),
+            ),
             const SizedBox(
-              height: 50,
+              height: 10,
+            ),
+            Text(
+              'Imali ste ${tocniOdgovori?.length ?? 0} točna i ${netocniOdgovori?.length ?? 0} netočna pitanja.',
+              style: GoogleFonts.lato(color: Colors.white, fontSize: 20),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            const SizedBox(
+              height: 80,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 60, right: 60),

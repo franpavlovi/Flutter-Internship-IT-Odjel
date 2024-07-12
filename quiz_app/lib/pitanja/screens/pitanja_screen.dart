@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/pitanja/domain/models/pitanje.dart';
-import 'package:quiz_app/pitanja/screens/rezultati_screen.dart';
 import 'package:quiz_app/pitanja/widgets/odgovor_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,15 +12,27 @@ class PitanjaScreen extends StatefulWidget {
 
 class _PitanjaScreenState extends State<PitanjaScreen> {
   String aktivniScreen = '/pitanja';
+  List<String> tocniOdgovori = [];
+  List<String> netocniOdgovori = [];
 
-  void odgovorNaPitanje() {
+  void odgovorNaPitanje(String odgovor) {
     setState(
       () {
+        var trenutnoPitanje = pitanja[pitanjeIndex];
+
+        if (trenutnoPitanje.tocanOdgovor == odgovor) {
+          tocniOdgovori.add(trenutnoPitanje.tocanOdgovor);
+        } else {
+          netocniOdgovori.add(odgovor);
+        }
+
         if (pitanjeIndex < pitanja.length - 1) {
           pitanjeIndex++;
         } else {
+          print(tocniOdgovori);
+          print(netocniOdgovori);
           aktivniScreen = '/rezultati';
-          Navigator.pushNamed(context, '/rezultati');
+          Navigator.pushNamed(context, '/rezultati', arguments: {'tocniOdgovori': tocniOdgovori, 'netocniodgovori': netocniOdgovori});
         }
       },
     );
@@ -40,7 +51,7 @@ class _PitanjaScreenState extends State<PitanjaScreen> {
         4,
         100,
       ),
-      elevation: 50,
+      elevation: 80,
       margin: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 100,
@@ -77,9 +88,15 @@ class _PitanjaScreenState extends State<PitanjaScreen> {
               ),
               ...trenutnoPitanje.randomRaspored().map(
                 (odgovor) {
-                  return OdgovorButton(
-                    odgovor: odgovor,
-                    naKlik: odgovorNaPitanje,
+                  return ElevatedButton(
+                    onPressed: () => odgovorNaPitanje(odgovor),
+                    child: Text(
+                      odgovor,
+                      style: GoogleFonts.lato(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   );
                 },
               ),

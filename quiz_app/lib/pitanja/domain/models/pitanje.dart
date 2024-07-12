@@ -39,4 +39,49 @@ const pitanja = [
     tocanOdgovor: 'Windhoek',
     ponudjeniOdgovori: ['Johannesbourg', 'Windhoek', 'Amsterdam', 'Ljubljana', 'Antwerpen'],
   ),
+  Pitanje(
+    postavljenoPitanje: 'Koji je glavni grad Francuske?',
+    tocanOdgovor: 'Pariz',
+    ponudjeniOdgovori: ['Pariz', 'Marseille', 'Lyon', 'Toulouse', 'Nice'],
+  ),
+  Pitanje(
+    postavljenoPitanje: 'Koji je glavni grad Japana?',
+    tocanOdgovor: 'Tokio',
+    ponudjeniOdgovori: ['Tokio', 'Osaka', 'Kyoto', 'Yokohama', 'Nagoya'],
+  ),
+  Pitanje(
+    postavljenoPitanje: 'Koji je glavni grad Brazila?',
+    tocanOdgovor: 'Brasilia',
+    ponudjeniOdgovori: ['Brasilia', 'Rio de Janeiro', 'São Paulo', 'Salvador', 'Belo Horizonte'],
+  ),
+  Pitanje(
+    postavljenoPitanje: 'Koji je glavni grad Kanade?',
+    tocanOdgovor: 'Ottawa',
+    ponudjeniOdgovori: ['Ottawa', 'Toronto', 'Montreal', 'Vancouver', 'Calgary'],
+  ),
+  Pitanje(
+    postavljenoPitanje: 'Koji je glavni grad Australije?',
+    tocanOdgovor: 'Canberra',
+    ponudjeniOdgovori: ['Canberra', 'Sydney', 'Melbourne', 'Brisbane', 'Perth'],
+  ),
+  Pitanje(
+    postavljenoPitanje: 'Koji je glavni grad Indije?',
+    tocanOdgovor: 'New Delhi',
+    ponudjeniOdgovori: ['New Delhi', 'Mumbai', 'Kolkata', 'Chennai', 'Bangalore'],
+  ),
+  Pitanje(
+    postavljenoPitanje: 'Koji je glavni grad Njemačke?',
+    tocanOdgovor: 'Berlin',
+    ponudjeniOdgovori: ['Berlin', 'Hamburg', 'München', 'Köln', 'Frankfurt'],
+  ),
+  Pitanje(
+    postavljenoPitanje: 'Koji je glavni grad Rusije?',
+    tocanOdgovor: 'Moskva',
+    ponudjeniOdgovori: ['Moskva', 'Sankt-Peterburg', 'Novosibirsk', 'Ekaterinburg', 'Nizhniy Novgorod'],
+  ),
+  Pitanje(
+    postavljenoPitanje: 'Koji je glavni grad Južne Afrike?',
+    tocanOdgovor: 'Pretoria',
+    ponudjeniOdgovori: ['Pretoria', 'Cape Town', 'Johannesburg', 'Durban', 'Bloemfontein'],
+  ),
 ];

@@ -4,12 +4,14 @@ class OdgovorButton extends StatelessWidget {
   const OdgovorButton({super.key, required this.odgovor, required this.naKlik});
 
   final String odgovor;
-  final void Function()? naKlik;
+  final String? Function(String text)? naKlik;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: naKlik,
+      onPressed: () {
+        naKlik!(odgovor);
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:quiz_app/pitanja/domain/models/pitanje.dart';
 import 'package:quiz_app/pitanja/widgets/odgovor_button.dart';
@@ -14,6 +16,8 @@ class _PitanjaScreenState extends State<PitanjaScreen> {
   String aktivniScreen = '/pitanja';
   List<String> tocniOdgovori = [];
   List<String> netocniOdgovori = [];
+
+  Random random = Random();
 
   void odgovorNaPitanje(String odgovor) {
     setState(

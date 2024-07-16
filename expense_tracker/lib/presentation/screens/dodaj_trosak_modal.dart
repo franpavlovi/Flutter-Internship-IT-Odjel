@@ -37,7 +37,7 @@ class _DodajTrosakModalState extends State<DodajTrosakModal> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 150),
       child: Form(
         key: _formKey,
         child: Column(

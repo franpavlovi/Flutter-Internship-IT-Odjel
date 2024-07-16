@@ -29,12 +29,14 @@ class _GlavniTroskoviScreenState extends State<GlavniTroskoviScreen> {
 
   void otvoriDodajTrosakModal() {
     showModalBottomSheet(
-        context: context,
-        builder: (ctx) {
-          return DodajTrosakModal(
-            dodajTrosak: dodajTrosakUListu,
-          );
-        });
+      context: context,
+      builder: (ctx) {
+        return DodajTrosakModal(
+          dodajTrosak: dodajTrosakUListu,
+        );
+      },
+      isScrollControlled: true,
+    );
   }
 
   @override

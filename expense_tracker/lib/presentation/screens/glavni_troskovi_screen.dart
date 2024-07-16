@@ -21,11 +21,19 @@ class _GlavniTroskoviScreenState extends State<GlavniTroskoviScreen> {
     Trosak(naziv: 'Poklon', iznos: 40, datum: DateTime.now(), kategorijaTroska: KategorijaTroska.ostalo),
   ];
 
-  void dodajTrosak() {
+  void dodajTrosakUListu(Trosak noviTrosak) {
+    setState(() {
+      troskovi.add(noviTrosak);
+    });
+  }
+
+  void otvoriDodajTrosakModal() {
     showModalBottomSheet(
         context: context,
         builder: (ctx) {
-          return const DodajTrosakModal();
+          return DodajTrosakModal(
+            dodajTrosak: dodajTrosakUListu,
+          );
         });
   }
 
@@ -41,7 +49,7 @@ class _GlavniTroskoviScreenState extends State<GlavniTroskoviScreen> {
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
-              dodajTrosak();
+              otvoriDodajTrosakModal();
             },
           ),
         ],

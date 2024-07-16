@@ -13,17 +13,17 @@ class GlavniTroskoviScreen extends StatefulWidget {
 }
 
 class _GlavniTroskoviScreenState extends State<GlavniTroskoviScreen> {
-  final List<Trosak> troskovi = [
-    Trosak(naziv: 'Restoran', iznos: 50, datum: DateTime.now(), kategorijaTroska: KategorijaTroska.hrana),
-    Trosak(naziv: 'Maldivi', iznos: 8000, datum: DateTime.now(), kategorijaTroska: KategorijaTroska.luksuz),
-    Trosak(naziv: 'Gorivo', iznos: 100, datum: DateTime.now(), kategorijaTroska: KategorijaTroska.transport),
-    Trosak(naziv: 'Struja', iznos: 150, datum: DateTime.now(), kategorijaTroska: KategorijaTroska.racuni),
-    Trosak(naziv: 'Poklon', iznos: 40, datum: DateTime.now(), kategorijaTroska: KategorijaTroska.ostalo),
-  ];
+  final List<Trosak> troskovi = [];
 
   void dodajTrosakUListu(Trosak noviTrosak) {
     setState(() {
       troskovi.add(noviTrosak);
+    });
+  }
+
+  void izbrisiTrosakIzListe(Trosak trosak) {
+    setState(() {
+      troskovi.remove(trosak);
     });
   }
 
@@ -43,7 +43,7 @@ class _GlavniTroskoviScreenState extends State<GlavniTroskoviScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('EXPENSE TRACKER', style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+        title: Text('POPIS TROŠKOVA', style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
         backgroundColor: const Color.fromARGB(255, 36, 33, 33),
         foregroundColor: Colors.white,
         centerTitle: true,
@@ -60,7 +60,11 @@ class _GlavniTroskoviScreenState extends State<GlavniTroskoviScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(child: ListaTroskovaBuilder(listatroskova: troskovi)),
+            Expanded(
+                child: ListaTroskovaBuilder(
+              listatroskova: troskovi,
+              izbrisi: izbrisiTrosakIzListe,
+            )),
           ],
         ),
       ),

@@ -13,18 +13,80 @@ class GlavniTroskoviScreen extends StatefulWidget {
 }
 
 class _GlavniTroskoviScreenState extends State<GlavniTroskoviScreen> {
-  final List<Trosak> troskovi = [];
+  final List<Trosak> troskovi = [
+    Trosak(
+      naziv: 'Restoran',
+      iznos: 50.0,
+      datum: DateTime.now(),
+      kategorijaTroska: KategorijaTroska.hrana,
+    ),
+    Trosak(
+      naziv: 'Kino',
+      iznos: 15.0,
+      datum: DateTime.now(),
+      kategorijaTroska: KategorijaTroska.zabava,
+    ),
+    Trosak(
+      naziv: 'Račun za struju',
+      iznos: 60.0,
+      datum: DateTime.now(),
+      kategorijaTroska: KategorijaTroska.racuni,
+    ),
+    Trosak(
+      naziv: 'Gorivo',
+      iznos: 100.0,
+      datum: DateTime.now(),
+      kategorijaTroska: KategorijaTroska.transport,
+    ),
+    Trosak(
+      naziv: 'Vikend u hotelu',
+      iznos: 300.0,
+      datum: DateTime.now(),
+      kategorijaTroska: KategorijaTroska.luksuz,
+    ),
+    Trosak(
+      naziv: 'Nepredviđeni trošak',
+      iznos: 20.0,
+      datum: DateTime.now(),
+      kategorijaTroska: KategorijaTroska.ostalo,
+    ),
+  ];
 
   void dodajTrosakUListu(Trosak noviTrosak) {
     setState(() {
       troskovi.add(noviTrosak);
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Trošak je dodan'),
+      ),
+    );
   }
 
   void izbrisiTrosakIzListe(Trosak trosak) {
+    final index = troskovi.indexOf(trosak);
+
     setState(() {
       troskovi.remove(trosak);
     });
+
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('Trošak je obrisan.'),
+        duration: const Duration(seconds: 4),
+        action: SnackBarAction(
+          label: 'Poništi',
+          onPressed: () {
+            setState(() {
+              troskovi.insert(index, trosak);
+            });
+          },
+        ),
+      ),
+    );
   }
 
   void otvoriDodajTrosakModal() {
@@ -42,6 +104,7 @@ class _GlavniTroskoviScreenState extends State<GlavniTroskoviScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 189, 189, 189),
       appBar: AppBar(
         title: Text('POPIS TROŠKOVA', style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
         backgroundColor: const Color.fromARGB(255, 36, 33, 33),

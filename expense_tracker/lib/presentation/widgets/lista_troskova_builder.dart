@@ -22,6 +22,17 @@ class ListaTroskovaBuilder extends StatelessWidget {
       itemBuilder: (context, index) {
         return Dismissible(
           key: ValueKey(listatroskova[index]),
+          background: Container(
+            color: Colors.red,
+            alignment: Alignment.centerLeft,
+            child: const Padding(
+              padding: EdgeInsets.only(left: 20.0),
+              child: Icon(
+                Icons.delete,
+                color: Colors.white,
+              ),
+            ),
+          ),
           onDismissed: (direction) {
             izbrisi(listatroskova[index]);
           },

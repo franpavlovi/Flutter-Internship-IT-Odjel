@@ -42,7 +42,7 @@ class _DodajTrosakModalState extends State<DodajTrosakModal> {
         key: _formKey,
         child: Column(
           children: [
-            Text('DODAJ TROŠAK', style: GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 26.0, color: Colors.black)),
+            Text('DODAJ TROŠAK', style: GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 28.0, color: Colors.black)),
             const SizedBox(height: 20),
             Flexible(
               child: TextFormField(

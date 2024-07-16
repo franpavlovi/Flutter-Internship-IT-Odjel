@@ -1,6 +1,7 @@
 import 'package:expense_tracker/domain/models/trosak.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class DodajTrosakModal extends StatefulWidget {
   const DodajTrosakModal({super.key});
@@ -10,8 +11,10 @@ class DodajTrosakModal extends StatefulWidget {
 }
 
 class _DodajTrosakModalState extends State<DodajTrosakModal> {
-  String ime = 'KATEGORIJA TROŠKA';
   KategorijaTroska? kategorijaTroska;
+  DateTime? odabraniDatum;
+  var datum = 'DATUM';
+  String ime = 'KATEGORIJA TROŠKA';
 
   final _nazivController = TextEditingController();
   final _iznosController = TextEditingController();
@@ -21,6 +24,11 @@ class _DodajTrosakModalState extends State<DodajTrosakModal> {
     _nazivController.dispose();
     _iznosController.dispose();
     super.dispose();
+  }
+
+  String formatirajDatum({required DateTime d}) {
+    final DateFormat formatter = DateFormat.yMd();
+    return formatter.format(d);
   }
 
   @override
@@ -86,11 +94,23 @@ class _DodajTrosakModalState extends State<DodajTrosakModal> {
                 Row(
                   children: [
                     Text(
-                      'DATUM',
+                      odabraniDatum == null ? datum : formatirajDatum(d: odabraniDatum!),
                       style: GoogleFonts.lato(fontWeight: FontWeight.bold),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        final DateTime? dateTime = await showDatePicker(
+                          context: context,
+                          firstDate: DateTime(2024),
+                          initialDate: DateTime.now(),
+                          lastDate: DateTime(2100),
+                        );
+                        if (dateTime != null) {
+                          setState(() {
+                            odabraniDatum = dateTime;
+                          });
+                        }
+                      },
                       icon: const Icon(Icons.calendar_month),
                     ),
                   ],

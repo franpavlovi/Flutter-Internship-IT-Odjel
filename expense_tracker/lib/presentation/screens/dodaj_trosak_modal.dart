@@ -191,7 +191,7 @@ class _DodajTrosakModalState extends State<DodajTrosakModal> {
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text('OK'),
+                                  child: const Text('OK'),
                                 ),
                               ],
                             );

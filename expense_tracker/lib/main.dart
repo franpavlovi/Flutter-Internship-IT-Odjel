@@ -1,5 +1,7 @@
+import 'package:expense_tracker/presentation/screens/bloc/test_bloc.dart';
 import 'package:expense_tracker/presentation/screens/glavni_troskovi_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,10 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Aplikacija za upravljanje troškovima',
-      home: GlavniTroskoviScreen(),
+      home: MultiBlocProvider(providers: [
+        BlocProvider(
+          create: (context) => TestBloc(),
+        ),
+      ], child: GlavniTroskoviScreen()),
     );
   }
 }

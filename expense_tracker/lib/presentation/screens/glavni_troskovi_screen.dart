@@ -1,4 +1,6 @@
+import 'package:expense_tracker/presentation/screens/bloc/test_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../domain/models/trosak.dart';
@@ -13,6 +15,11 @@ class GlavniTroskoviScreen extends StatefulWidget {
 }
 
 class _GlavniTroskoviScreenState extends State<GlavniTroskoviScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   final List<Trosak> troskovi = [
     Trosak(
       naziv: 'Restoran',
@@ -117,6 +124,12 @@ class _GlavniTroskoviScreenState extends State<GlavniTroskoviScreen> {
               otvoriDodajTrosakModal();
             },
           ),
+          IconButton(
+            icon: const Icon(Icons.add_box),
+            onPressed: () {
+              context.read<TestBloc>().add(AddItemEvent(item: 'Novi trosak'));
+            },
+          ),
         ],
       ),
       body: Center(
@@ -124,10 +137,39 @@ class _GlavniTroskoviScreenState extends State<GlavniTroskoviScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-                child: ListaTroskovaBuilder(
-              listatroskova: troskovi,
-              izbrisi: izbrisiTrosakIzListe,
-            )),
+              child: ListaTroskovaBuilder(
+                listatroskova: troskovi,
+                izbrisi: izbrisiTrosakIzListe,
+              ),
+            ),
+            BlocBuilder<TestBloc, TestState>(
+              builder: (context, testState) {
+                if (testState is TestInitial) {
+                  return const Center(
+                    child: Text('Nema podataka, inicijalno stanje'),
+                  );
+                }
+
+                if (testState is TestLoadingstate) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+
+                if (testState is TestLoadedState) {
+                  return Expanded(
+                    child: ListView.builder(
+                      itemCount: testState.listatroskova!.length,
+                      itemBuilder: (context, index) {
+                        return Text(testState.listatroskova![index]);
+                      },
+                    ),
+                  );
+                }
+
+                return Container();
+              },
+            )
           ],
         ),
       ),

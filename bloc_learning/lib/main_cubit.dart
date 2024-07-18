@@ -9,7 +9,7 @@ import 'package:bloc/bloc.dart';
 class BrojacCubit extends Cubit<int> {
   //Cubit<int> je klasa koja radi sa integer stanjima
 
-  BrojacCubit() : super(5); //konstruktor inicijalizira početno stanje na 0
+  BrojacCubit() : super(0); //konstruktor inicijalizira početno stanje na 0
 
   void povecaj() => emit(state + 1); //definiramo funkcije (triggere)
   void smanji() => emit(state - 1);

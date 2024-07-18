@@ -32,46 +32,68 @@ class BrojacScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 120),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        BlocProvider.of<BrojacCubit>(context).smanji(); // povezivanje funkcije i iconbuttona
-                      },
-                      icon: const Icon(Icons.remove),
-                    ),
-                    const Spacer(),
-                    BlocBuilder<BrojacCubit, BrojacState>(
-                      builder: (context, state) {
-                        return Text(state.brojac.toString());
-                      },
-                    ),
-                    const Spacer(),
-                    IconButton(
-                      onPressed: () {
-                        BlocProvider.of<BrojacCubit>(context).povecaj(); // povezivanje funkcije i iconbuttona
-                      },
-                      icon: const Icon(Icons.add),
-                    ),
-                  ],
+      body: BlocListener<BrojacCubit, BrojacState>(
+        //omotavamo sve child widgete sa BlocListenerom
+        listener: (context, state) {
+          //zadajemo sta osluškuje
+          if (state.inkrementiran == true) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                duration: Duration(seconds: 1),
+                content: Text('Brojac je povecan!'),
+              ),
+            );
+          } else if (state.inkrementiran == false) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                duration: Duration(microseconds: 300),
+                content: Text('Brojac je smanjen!'),
+              ),
+            );
+          }
+        },
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 120),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          BlocProvider.of<BrojacCubit>(context).smanji(); // povezivanje funkcije i iconbuttona
+                        },
+                        icon: const Icon(Icons.remove),
+                      ),
+                      const Spacer(),
+                      BlocBuilder<BrojacCubit, BrojacState>(
+                        //nacin kako se povezuje data i UI (BlocBuilder)
+                        builder: (context, state) {
+                          return Text(state.brojac.toString());
+                        },
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () {
+                          BlocProvider.of<BrojacCubit>(context).povecaj(); // povezivanje funkcije i iconbuttona
+                        },
+                        icon: const Icon(Icons.add),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

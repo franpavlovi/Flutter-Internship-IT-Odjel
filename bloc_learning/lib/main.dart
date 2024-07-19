@@ -101,9 +101,9 @@ class BrojacScreen extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => BlocProvider.value(
-                        //omogućava pristup BLoC instancama unutar widgeta
+                        //omogućava pristup BLoC instancama unutar widgeta tj omogućava vrijednosti da se prenese iz jednog widgeta u drugi
                         value: BlocProvider.of<BrojacCubit>(context), //dohvaća instancu BrojacCubit BLoC-a iz trenutnog konteksta
-                        child: DrugiScreen(),
+                        child: const DrugiScreen(),
                       ),
                     ),
                   );

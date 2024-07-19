@@ -1,28 +1,10 @@
 import 'package:bloc_learning/logic/cubit/brojac_cubit.dart';
-import 'package:bloc_learning/presentation/screens/drugi_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+class DrugiScreen extends StatelessWidget {
+  const DrugiScreen({super.key});
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BrojacCubit(),
-      child: MaterialApp(
-        title: 'BLoC Learning',
-        home: BrojacScreen(),
-      ),
-    );
-  }
-}
-
-class BrojacScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +16,7 @@ class BrojacScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: BlocListener<BrojacCubit, BrojacState>(
-        //omotavamo sve child widgete sa BlocListenerom
         listener: (context, state) {
-          //zadajemo sta osluškuje
           if (state.inkrementiran == true) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -71,13 +51,12 @@ class BrojacScreen extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {
-                          BlocProvider.of<BrojacCubit>(context).smanji(); // povezivanje funkcije i iconbuttona
+                          BlocProvider.of<BrojacCubit>(context).smanji();
                         },
                         icon: const Icon(Icons.remove),
                       ),
                       const Spacer(),
                       BlocBuilder<BrojacCubit, BrojacState>(
-                        //nacin kako se povezuje data i UI (BlocBuilder)
                         builder: (context, state) {
                           return Text(state.brojac.toString());
                         },
@@ -85,7 +64,7 @@ class BrojacScreen extends StatelessWidget {
                       const Spacer(),
                       IconButton(
                         onPressed: () {
-                          BlocProvider.of<BrojacCubit>(context).povecaj(); // povezivanje funkcije i iconbuttona
+                          BlocProvider.of<BrojacCubit>(context).povecaj();
                         },
                         icon: const Icon(Icons.add),
                       ),
@@ -93,23 +72,6 @@ class BrojacScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-              MaterialButton(
-                color: Colors.blue,
-                textColor: Colors.white,
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => BlocProvider.value(
-                        //omogućava pristup BLoC instancama unutar widgeta
-                        value: BlocProvider.of<BrojacCubit>(context), //dohvaća instancu BrojacCubit BLoC-a iz trenutnog konteksta
-                        child: DrugiScreen(),
-                      ),
-                    ),
-                  );
-                },
-                child: const Text('DRUGI EKRAN'),
-              )
             ],
           ),
         ),

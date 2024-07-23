@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/presentation/screens/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,17 +11,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Meals App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Meals App'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      title: 'Kuharica',
+      home: WelcomeScreen(),
     );
   }
 }

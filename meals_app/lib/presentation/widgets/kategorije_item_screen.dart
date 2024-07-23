@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/domain/models/kategorija.dart';
 
 class KategorijeItemScreen extends StatelessWidget {
-  const KategorijeItemScreen({super.key, required this.kategorija});
+  const KategorijeItemScreen({super.key, required this.kategorija, required this.odabirKategorije});
 
   final Kategorija kategorija;
+  final void Function() odabirKategorije;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: odabirKategorije,
       splashColor: Colors.white,
       borderRadius: BorderRadius.circular(10),
       child: Container(

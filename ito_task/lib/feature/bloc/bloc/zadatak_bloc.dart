@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:ito_task/feature/domain/models/zadatak.dart';
 import 'package:meta/meta.dart';
 
 part 'zadatak_event.dart';

@@ -35,40 +35,42 @@ class _ListazadatakaScreenState extends State<ListazadatakaScreen> {
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Zadatakwidget(),
-            Zadatakwidget(),
-            Zadatakwidget(),
-            Zadatakwidget(),
-            Zadatakwidget(),
-            Zadatakwidget(),
-            Zadatakwidget(),
-            Zadatakwidget(),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
+      body: Stack(
+        children: [
+          const SingleChildScrollView(
+            child: const Column(
+              children: [
+                Zadatakwidget(),
+                Zadatakwidget(),
+                Zadatakwidget(),
+                Zadatakwidget(),
+                Zadatakwidget(),
+                Zadatakwidget(),
+                Zadatakwidget(),
+                Zadatakwidget(),
+              ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
+              child: FloatingActionButton(
                 backgroundColor: const Color.fromARGB(255, 163, 160, 160),
                 foregroundColor: Colors.white,
-              ),
-              onPressed: dodajZadatak,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'DODAJ ZADATAK',
-                    style: GoogleFonts.lato(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Icon(Icons.add),
-                ],
+                onPressed: dodajZadatak,
+                child: const Icon(Icons.add),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
+}
+
+void main() {
+  runApp(const MaterialApp(
+    home: ListazadatakaScreen(),
+  ));
 }

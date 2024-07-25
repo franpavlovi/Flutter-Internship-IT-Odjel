@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ito_task/feature/bloc/bloc/zadatak_bloc.dart';
 import 'package:ito_task/presentation/widgets/DodajZadatak.dart';
 import 'package:ito_task/presentation/widgets/ZadatakWidget.dart';
 
@@ -37,17 +39,21 @@ class _ListazadatakaScreenState extends State<ListazadatakaScreen> {
       ),
       body: Stack(
         children: [
-          const SingleChildScrollView(
-            child: const Column(
-              children: [
-                Zadatakwidget(),
-                Zadatakwidget(),
-                Zadatakwidget(),
-                Zadatakwidget(),
-                Zadatakwidget(),
-              ],
-            ),
-          ),
+          BlocBuilder<ZadatakBloc, ZadatakState>(builder: (context, state) {
+            if (state is ZadatakInitial || state is ZadatakLoading) {
+              context.read<ZadatakBloc>().add(GetZadaciEvent(zadatak: []));
+              return Center(child: const CircularProgressIndicator());
+            } else if (state is ZadatakLoaded) {
+              return ListView.builder(
+                itemCount: state.zadatakList.length,
+                itemBuilder: (context, index) {
+                  return Zadatakwidget(zadatak: state.zadatakList[index]);
+                },
+              );
+            } else {
+              return Container();
+            }
+          }),
           Align(
             alignment: Alignment.bottomRight,
             child: Padding(
@@ -64,10 +70,4 @@ class _ListazadatakaScreenState extends State<ListazadatakaScreen> {
       ),
     );
   }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: ListazadatakaScreen(),
-  ));
 }

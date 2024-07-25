@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ito_task/feature/domain/models/zadatak.dart';
 
 class Zadatakwidget extends StatefulWidget {
-  const Zadatakwidget({super.key});
+  const Zadatakwidget({super.key, required this.zadatak});
+
+  final Zadatak zadatak;
 
   @override
   State<Zadatakwidget> createState() => _ZadatakwidgetState();
@@ -26,7 +29,7 @@ class _ZadatakwidgetState extends State<Zadatakwidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Ime zadatka',
+                widget.zadatak.imeZadatka,
                 style: GoogleFonts.lato(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -38,7 +41,7 @@ class _ZadatakwidgetState extends State<Zadatakwidget> {
                 color: Colors.white70,
               ),
               Text(
-                'Opis zadatka',
+                widget.zadatak.opisZadatka,
                 style: GoogleFonts.lato(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,

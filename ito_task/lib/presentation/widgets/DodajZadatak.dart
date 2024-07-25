@@ -27,12 +27,15 @@ class _DodajzadatakState extends State<Dodajzadatak> {
 
   void dodajZadatak() {
     if (_formKey.currentState!.validate()) {
-      context.read<ZadatakBloc>().add(CreateZadatakEvent(
+      context.read<ZadatakBloc>().add(
+            CreateZadatakEvent(
               zadatak: Zadatak(
-            imeZadatka: _imeZadatkaController.text,
-            opisZadatka: _opisZadatkaController.text,
-            isActive: true,
-          )));
+                imeZadatka: _imeZadatkaController.text,
+                opisZadatka: _opisZadatkaController.text,
+                isActive: true,
+              ),
+            ),
+          );
     }
 
     Navigator.of(context).pop();

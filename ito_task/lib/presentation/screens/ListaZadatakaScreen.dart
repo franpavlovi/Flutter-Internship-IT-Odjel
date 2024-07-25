@@ -11,7 +11,7 @@ class ListazadatakaScreen extends StatefulWidget {
 }
 
 class _ListazadatakaScreenState extends State<ListazadatakaScreen> {
-  void dodajZadatak() {
+  void dodajZadatakModal() {
     showModalBottomSheet(
       context: context,
       builder: (ctx) {
@@ -56,9 +56,9 @@ class _ListazadatakaScreenState extends State<ListazadatakaScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
               child: FloatingActionButton(
-                backgroundColor: const Color.fromARGB(255, 163, 160, 160),
+                backgroundColor: const Color.fromARGB(218, 197, 194, 194),
                 foregroundColor: Colors.white,
-                onPressed: dodajZadatak,
+                onPressed: dodajZadatakModal,
                 child: const Icon(Icons.add),
               ),
             ),

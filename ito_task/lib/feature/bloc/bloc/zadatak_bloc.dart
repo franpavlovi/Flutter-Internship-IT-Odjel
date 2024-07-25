@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
 import 'package:bloc/bloc.dart';
 import 'package:ito_task/feature/domain/models/zadatak.dart';
 import 'package:meta/meta.dart';
@@ -7,8 +11,24 @@ part 'zadatak_state.dart';
 
 class ZadatakBloc extends Bloc<ZadatakEvent, ZadatakState> {
   ZadatakBloc() : super(ZadatakInitial()) {
-    on<ZadatakEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<CreateZadatakEvent>(createZadatak);
+  }
+}
+
+Future createZadatak(CreateZadatakEvent event, Emitter emit) async {
+  emit(ZadatakLoading());
+  try {
+    var url = Uri.parse('https://fir-task-menanger-default-rtdb.europe-west1.firebasedatabase.app/users/003/task/.json');
+    var response = await http.post(url,
+        body: jsonEncode({
+          'title': event.zadatak.imeZadatka,
+          'text': event.zadatak.opisZadatka,
+          'isActive': event.zadatak.isActive,
+        }));
+    if (response.statusCode == 200) {
+      emit(ZadatakLoaded([event.zadatak]));
+    }
+  } catch (e) {
+    emit(ZadatakError());
   }
 }

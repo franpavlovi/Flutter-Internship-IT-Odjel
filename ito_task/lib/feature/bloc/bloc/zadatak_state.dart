@@ -16,3 +16,5 @@ final class ZadatakLoaded extends ZadatakState {
 final class ZadatakLoading extends ZadatakState {}
 
 final class ZadatakError extends ZadatakState {}
+
+final class CreatingZadatak extends ZadatakState {}

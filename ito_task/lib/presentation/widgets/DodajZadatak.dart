@@ -1,5 +1,9 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ito_task/feature/bloc/bloc/zadatak_bloc.dart';
+import 'package:ito_task/feature/domain/models/zadatak.dart';
 
 class Dodajzadatak extends StatefulWidget {
   const Dodajzadatak({super.key});
@@ -22,10 +26,16 @@ class _DodajzadatakState extends State<Dodajzadatak> {
   }
 
   void dodajZadatak() {
-    if (_formKey.currentState?.validate() ?? false) {
-      print('Naziv zadatka: ${_imeZadatkaController.text}');
-      print('Opis zadatka: ${_opisZadatkaController.text}');
+    if (_formKey.currentState!.validate()) {
+      context.read<ZadatakBloc>().add(CreateZadatakEvent(
+              zadatak: Zadatak(
+            imeZadatka: _imeZadatkaController.text,
+            opisZadatka: _opisZadatkaController.text,
+            isActive: true,
+          )));
     }
+
+    Navigator.of(context).pop();
   }
 
   @override

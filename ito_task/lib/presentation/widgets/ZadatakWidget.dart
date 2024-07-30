@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ito_task/feature/bloc/bloc/zadatak_bloc.dart';
 import 'package:ito_task/feature/domain/models/zadatak.dart';
 
-class Zadatakwidget extends StatefulWidget {
-  const Zadatakwidget({super.key, required this.zadatak});
+class ZadatakWidget extends StatefulWidget {
+  const ZadatakWidget({super.key, required this.zadatak});
 
   final Zadatak zadatak;
 
   @override
-  State<Zadatakwidget> createState() => _ZadatakwidgetState();
+  State<ZadatakWidget> createState() => _ZadatakWidgetState();
 }
 
-class _ZadatakwidgetState extends State<Zadatakwidget> {
+class _ZadatakWidgetState extends State<ZadatakWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,7 +23,7 @@ class _ZadatakwidgetState extends State<Zadatakwidget> {
         vertical: 8,
       ),
       child: Card(
-        color: const Color.fromARGB(255, 163, 160, 160),
+        color: widget.zadatak.isActive ? const Color.fromARGB(255, 163, 160, 160) : const Color.fromARGB(255, 52, 53, 53),
         elevation: 8,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -55,22 +57,26 @@ class _ZadatakwidgetState extends State<Zadatakwidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<ZadatakBloc>().add(UpdateZadatakEvent(zadatak: widget.zadatak));
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(153, 4, 194, 115),
+                      backgroundColor: widget.zadatak.isActive ? const Color.fromARGB(153, 4, 194, 115) : const Color.fromARGB(83, 4, 194, 115),
                     ),
-                    child: const Text(
-                      'URAĐEN',
-                      style: TextStyle(color: Colors.white),
+                    child: Text(
+                      widget.zadatak.isActive ? 'URAĐEN' : 'VRATI',
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                   const SizedBox(
                     width: 20,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<ZadatakBloc>().add(DeleteZadatak(zadatak: widget.zadatak));
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: widget.zadatak.isActive ? Colors.red : const Color.fromARGB(132, 244, 67, 54),
                     ),
                     child: const Text(
                       'IZBRIŠI',

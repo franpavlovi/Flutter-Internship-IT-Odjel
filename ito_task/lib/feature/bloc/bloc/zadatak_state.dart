@@ -1,6 +1,5 @@
 part of 'zadatak_bloc.dart';
 
-@immutable
 abstract class ZadatakState {}
 
 final class ZadatakInitial extends ZadatakState {}

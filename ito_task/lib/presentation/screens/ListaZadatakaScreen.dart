@@ -42,12 +42,12 @@ class _ListazadatakaScreenState extends State<ListazadatakaScreen> {
           BlocBuilder<ZadatakBloc, ZadatakState>(builder: (context, state) {
             if (state is ZadatakInitial || state is ZadatakLoading) {
               context.read<ZadatakBloc>().add(GetZadaciEvent(zadatak: []));
-              return Center(child: const CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (state is ZadatakLoaded) {
               return ListView.builder(
                 itemCount: state.zadatakList.length,
                 itemBuilder: (context, index) {
-                  return Zadatakwidget(zadatak: state.zadatakList[index]);
+                  return ZadatakWidget(zadatak: state.zadatakList[index]);
                 },
               );
             } else {
